@@ -12,8 +12,8 @@
 
   <script>
     var qrcode = new QRCode(document.getElementById("qrcode"), {
-      width : screen.width-10,
-      height : screen.width-10,
+      width : (window.innerHeight<window.innerWidth? window.innerHeight:window.innerWidth)-10,
+      height : (window.innerHeight<window.innerWidth? window.innerHeight:window.innerWidth)-10,
       //correctLevel : QRCode.CorrectLevel.L
 
     });

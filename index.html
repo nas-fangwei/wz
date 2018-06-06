@@ -4,28 +4,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
 <body style="margin: 5px">
 <div id="qrcode" style="width:100%;margin-top:0px;"></div>
 
-  <script>
-    var qrcode = new QRCode(document.getElementById("qrcode"), {
-      width : (window.innerHeight<window.innerWidth? window.innerHeight:window.innerWidth)-10,
-      height : (window.innerHeight<window.innerWidth? window.innerHeight:window.innerWidth)-10,
-      //correctLevel : QRCode.CorrectLevel.L
+<script>
+  var cq = (window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth) - 10
+  if (cq <= 0)
+    cq = (screen.availHeight < screen.availWidth ? screen.availHeight : screen.availWidth) - 10
+  if (cq <= 0)
+    cq = 350
+  console.log(`width`, window.innerWidth, `height`, window.innerHeight, `cq`, cq)
+  var qrcode = new QRCode(document.getElementById('qrcode'), {
+    width: cq,
+    height: cq,
+    //correctLevel : QRCode.CorrectLevel.L
 
-    });
-    $.get("https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid=435511",function (data, status) {
-      console.log(data,status);
-      var jsd=JSON.parse(data);
-      console.log(jsd);
-      console.log(jsd.qrcode);
-      qrcode.makeCode(jsd.qrcode);
-    })
+  })
 
-    //qrcode.makeCode('abc');
-  </script>
+  $.get('https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid=435511', function (data, status) {
+    console.log(data, status)
+    var jsd = JSON.parse(data)
+    console.log(jsd)
+    console.log(jsd.qrcode)
+    qrcode.makeCode(jsd.qrcode)
+  })
+
+  //qrcode.makeCode('abc');
+</script>
 </body>
 </html>

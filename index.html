@@ -7,13 +7,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<div id="qrcode" style="width:300px; height:300px; margin-top:15px;"></div>
+<body style="margin: 5px">
+<div id="qrcode" style="width:100%;margin-top:0px;"></div>
 
   <script>
     var qrcode = new QRCode(document.getElementById("qrcode"), {
-      width : 300,
-      height : 300
+      width : screen.width-10,
+      height : screen.width-10,
+      //correctLevel : QRCode.CorrectLevel.L
+
     });
     $.get("https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid=435511",function (data, status) {
       console.log(data,status);

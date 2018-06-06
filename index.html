@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="qrcode" style="width:300px; height:300px; margin-top:15px;"></div>
+
+  <script>
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+      width : 300,
+      height : 300
+    });
+    $.get("https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid=435510",function (data, status) {
+      console.log(data,status);
+      var jsd=JSON.parse(data);
+      console.log(jsd);
+      console.log(jsd.qrcode);
+      qrcode.makeCode(jsd.qrcode);
+    })
+
+    //qrcode.makeCode('abc');
+  </script>
+</body>
+</html>

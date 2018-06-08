@@ -5,10 +5,11 @@
   <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>WZ</title>
 </head>
 <body style="margin: 5px">
 <div id="qrcode" style="width:100%;margin-top:0px;"></div>
+<button onclick="make()">RE</button>
 
 <script>
   var cq = (window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth) - 10
@@ -24,13 +25,18 @@
 
   })
 
-  $.get('https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid=435511', function (data, status) {
-    console.log(data, status)
-    var jsd = JSON.parse(data)
-    console.log(jsd)
-    console.log(jsd.qrcode)
-    qrcode.makeCode(jsd.qrcode)
-  })
+  function make () {
+    $.get('https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid=435511', function (data, status) {
+      console.log(data, status)
+      var jsd = JSON.parse(data)
+      console.log(jsd)
+      console.log(jsd.qrcode)
+      qrcode.clear()
+      qrcode.makeCode(jsd.qrcode)
+    })
+  }
+
+  make()
 
   //qrcode.makeCode('abc');
 </script>

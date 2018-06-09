@@ -25,12 +25,14 @@
 
   })
 
-  function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-  }
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
   
   function make () {
-    $.get('https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid='+getRandomArbitrary(435500,435512), function (data, status) {
+    $.get('https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid='+getRandomInt(435500,435512), function (data, status) {
       console.log(data, status)
       var jsd = JSON.parse(data)
       console.log(jsd)

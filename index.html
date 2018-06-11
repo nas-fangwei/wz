@@ -9,7 +9,8 @@
 </head>
 <body style="margin: 5px">
 <div id="qrcode" style="width:100%;margin-top:0px;"></div>
-<label id="timetext"> </label><button onclick="make()">RE</button>
+<label id="timetext"> </label>
+<button onclick="make()">RE</button>
 
 <script>
   var cq = (window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth) - 10
@@ -22,18 +23,23 @@
     width: cq,
     height: cq,
     //correctLevel : QRCode.CorrectLevel.L
-
   })
 
+  function getRandomInt (min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min)) + min //The maximum is exclusive and the minimum is inclusive
+  }
+
   function make () {
-    $.get('https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid=435511', function (data, status) {
+    $.get('https://u.iweizhu.com.cn/ios_lingling_opendoor.php?ver=2.3.9&uid=227233&pt=1&zid=' + getRandomInt(435500, 435512), function (data, status) {
       console.log(data, status)
       var jsd = JSON.parse(data)
       console.log(jsd)
       console.log(jsd.qrcode)
       qrcode.clear()
       qrcode.makeCode(jsd.qrcode)
-      document.getElementById("timetext").innerText=new Date();
+      document.getElementById('timetext').innerText = new Date()
     })
   }
 
